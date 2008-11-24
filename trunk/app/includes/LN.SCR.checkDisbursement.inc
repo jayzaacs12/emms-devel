@@ -38,7 +38,7 @@ if ($form->validate()) {
   if ($values['creator_date_2'] == '')   { $creator_date_2 	= '1000-01-01'; } 
 
 //  $fields[] 						= 'sum(l.kp) as amount';
-  $extra['amount']['header']		= 'tblLoansMaster.amount';
+  $extra['amount']['header']		= 'tblLoans.kp';
   $extra['amount']['pack']			= '%s';
   $extra['amount']['align']			= 'right';
 
@@ -56,6 +56,16 @@ if ($form->validate()) {
   $extra['program_id']['header']	= 'tblPrograms.program';
   $extra['program_id']['pack']		= '%s';
   $extra['program_id']['align']		= 'left';
+
+//  $fields[]                               = 'lm.xp_delivered_date as xp_delivered_date';
+  $extra['xp_delivered_date']['header']     = 'LN.SCR.doCheckRelease';
+  $extra['xp_delivered_date']['pack']		= '%s';
+  $extra['xp_delivered_date']['align']		= 'right';
+
+//  $fields[] 						= 'lm.chk_process as chk_process';
+  $extra['chk_process']['header']   = 'prints';
+  $extra['chk_process']['pack']		= '%s';
+  $extra['chk_process']['align']	= 'right';
 
 //  $fields[] 						= 'lm.id as view';
   $extra['view']['header']			= 'view';
@@ -90,7 +100,7 @@ if ($form->validate()) {
   $mrow = WEBPAGE::$dbh->getAll(sprintf("
 					    		select 
 					    			lm.amount as amount,
-					    			CONCAT(u.first,' ',u.last) as creator_id,z.zone as zone_id,p.program as program_id,lm.id as view,lm.id as disbursement 
+					    			CONCAT(u.first,' ',u.last) as creator_id,z.zone as zone_id,p.program as program_id,lm.xp_delivered_date,lm.chk_process,lm.id as view,lm.id as disbursement
 		    						    from tblLoansMaster as lm, tblLoanTypes as lt, tblUsers as u, tblZones as z, tblPrograms as p, tblLoansMasterDetails as lmd   
                         			    where lm.check_status = 'A'
                         			      AND lm.creator_id %s '%s'

@@ -29,11 +29,13 @@ $tpl->setVariable('check_number_label',		$_LABELS['tblLoansMaster.check_number']
 $tpl->setVariable('check_number',			$master->data['check_number']);
 $tpl->setVariable('check_status_label',		$_LABELS['tblLoansMaster.check_status']);
 $tpl->setVariable('check_status',			$_LABELS[sprintf('tblLoansMaster.check_status.%s',$master->data['check_status'])]);
+$tpl->setVariable('xp_delivered_date',		$master->data['xp_delivered_date']);
+$tpl->setVariable('xp_delivered_date_label',$_LABELS['tblLoansMaster.xp_delivered_date']);
 
 $tpl->setVariable('chart_title',			$_LABELS['details']);
 
 $tpl->setVariable('date',					date('Y-m-d'));
-$tpl->setVariable('print',					sprintf('<br><a href=javascript:print()>%s</a>',$_LABELS['printSheet']));
+$tpl->setVariable('print',					sprintf('<br><a href=javascript:makeRequest("%sindex.popup.php?scr_name=LN.SCR.loansMasterPrintCounter&id=%s")>%s</a>',WEBPAGE::$url,$_REQUEST['id'],$_LABELS['printSheet']));
   
 //print sub-loans chart
 $head 	= array($_LABELS['tblLoans.loan_code'],$_LABELS['tblLoans.kp'],$_LABELS['tblClients.id'],$_LABELS['status'],$_LABELS['details']);

@@ -157,7 +157,7 @@ if (($master->data['xp_delivered_date'] <= $ddate->format('%Y-%m-%d')) && ($mast
 if ($_CONF['flex_1st_pmt_date'] == '1') {
   $fdate = ($master->data['xp_first_payment_date'] > $def_delivered_date ) ? new Date($master->data['xp_first_payment_date']) : new Date($loan->next_payment_date($def_delivered_date));
   } else {
-  $fdate = ($master->data['xp_first_payment_date'] <= $loan->next_payment_date($def_delivered_date)) ? new Date($master->data['xp_first_payment_date']) : new Date($loan->next_payment_date($def_delivered_date));
+  $fdate = (($master->data['xp_first_payment_date'] <= $loan->next_payment_date($def_delivered_date))&&($master->data['xp_first_payment_date'] > $def_delivered_date)) ? new Date($master->data['xp_first_payment_date']) : new Date($loan->next_payment_date($def_delivered_date));
   }
 
 //print the form

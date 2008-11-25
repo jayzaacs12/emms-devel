@@ -68,6 +68,26 @@ class LOAN_MASTER extends WEBPAGE
   return $ls;
   }
 
+  function get_duplicates()
+  {
+  global $_CONF;
+  if ($_CONF['duplicate_chk_request_margin'] < 0) { return array(); }
+  return WEBPAGE::$dbh->getAssoc(sprintf("select
+                                        id,id
+                                    from
+                                        tblLoansMaster
+                                    where
+                                        id != '%s' and
+                                        borrower_id = '%s' and
+                                        borrower_type = '%s' and
+                                        abs(datediff(creator_date,'%s')) <= '%s'",
+                                        $this->data['id'],
+                                        $this->data['borrower_id'],
+                                        $this->data['borrower_type'],
+                                        $this->data['creator_date'],
+                                        $_CONF['duplicate_chk_request_margin']));
+  }
+  
   function loadloans()
   {
   $this->data['loans'] = SQL::getAssoc('tblLoansMasterDetails AS lmd, tblLoans AS l', 'l.id, l.status', sprintf('lmd.master_id = %s AND l.id = lmd.loan_id', $this->data['id']));

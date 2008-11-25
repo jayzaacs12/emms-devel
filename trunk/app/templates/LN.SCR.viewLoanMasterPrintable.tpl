@@ -41,6 +41,8 @@
 </script>
 
 <h1>{page_title}</h1>{date}
+{message}
+<a href="index.popup.php?scr_name=LN.SCR.browseLoanMasterDuplicates&id={master_id}">{duplicates}</a>
 <br><br>
 <table cellpadding=0 cellspacing=0>
   <tr><td class=label>{zone_label}			</td><td>{zone}</td></tr>

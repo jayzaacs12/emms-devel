@@ -1,0 +1,5 @@
+update tblConfiguration set eng = 'r7', esp = 'r7', fra = 'r7' where var = 'update';
+insert into tblConfiguration (`id`,`var`,`description`,`eng`,`esp`,`fra`) values (NULL , 'duplicate_chk_request_margin', 'checks requests for the same borrower within a number (margin_chk_duplicates) of days will launch a duplicated alert. In order to disable specify a negative integer number', '14', '14', '14');
+insert into `tblLocalizedTexts` (`id` ,`msg_id` ,`eng` ,`esp` ,`fra`) values (NULL , 'duplicate_chk_request_alert', 'Duplicated request alert.<br />Please verify potencial duplicates to proceed.', 'Alerta de solicitud duplicada.<br /> Verifique los posibles duplicados antes de continuar.', 'Duplicated request alert.<br />Please verify potencial duplicates to proceed.');
+insert into `tblLocalizedTexts` (`id` ,`msg_id` ,`eng` ,`esp` ,`fra`) values (NULL , 'verify_duplicates', 'Verify duplicates', 'Verificar duplicados', 'Verify duplicates');
+insert into `tblLocalizedTexts` (`id` ,`msg_id` ,`eng` ,`esp` ,`fra`) values (NULL , 'LN.SCR.browseLoanMasterDuplicates', 'Duplicated loan requests', 'Solicitudes de préstamo duplicadas', 'Duplicated loan requests');

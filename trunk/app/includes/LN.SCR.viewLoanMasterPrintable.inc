@@ -71,4 +71,17 @@ foreach($data as $key=>$row) {
   }
 $tpl->setCurrentBlock("chart") ;
 $tpl->parseCurrentBlock("chart") ;
+
+if (count($master->get_duplicates()) > 0) {
+
+  $tpl->setVariable('master_id', $_REQUEST['id']);
+  $tpl->setVariable('duplicates', $_LABELS['verify_duplicates']);
+
+  $tpl->addBlockfile('message','message','ST.SCR.message.tpl');
+  $tpl->setCurrentBlock("message") ;
+  $tpl->setVariable('ico',sprintf('%s/icons/wrn.png',WEBPAGE::$themePath));
+  $tpl->setVariable('msg',$_LABELS['duplicate_chk_request_alert']);
+  $tpl->parseCurrentBlock("message") ;
+  }
+
 ?>

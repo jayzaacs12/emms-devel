@@ -1,0 +1,1 @@
+update tblConfiguration set eng = 'r9', esp = 'r9', fra = 'r9' where var = 'update';

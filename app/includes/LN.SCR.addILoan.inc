@@ -19,7 +19,6 @@ switch ($loan->data['status']) {
   case 'N' : break;
   case 'O' : break;
   case 'S' : break;
-  case 'A' : break;
   case 'R' : break;
   case 'RO': break;
   default: 	

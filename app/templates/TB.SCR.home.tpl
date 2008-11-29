@@ -16,7 +16,7 @@
     <td align=center valign=bottom><a href='javascript:openWin("index.popup.php?scr_name=RP.SCR.transactionsCredits","credits","menubar=no,scrollbars=yes,resizable=yes,width=700,height=320");javascript:openWin("index.popup.php?scr_name=RP.SCR.transactionsDebits","debits","menubar=no,scrollbars=yes,resizable=yes,width=700,height=320")' onClick=''><img alt='' src='themes/blue/icons/48x48/money_transactions.png'><br>{transact}</a></td>
   </tr>
   <tr>
-    <td align=center valign=bottom><a href='javascript:openWin("index.popup.php?scr_name=LN.SCR.finCalculator","finCalculator","menubar=no,scrollbars=yes,resizable=yes,width=700,height=320")' onClick=''><img alt='' src='themes/blue/icons/48x48/calculator.png'><br>{calculator}</a></td>
+    <td align=center valign=bottom><a href='javascript:openWin("index.popup.php?scr_name=LN.SCR.finCalculatorX","finCalculatorX","menubar=no,scrollbars=yes,resizable=yes,width=450,height=520")' onClick=''><img alt='' src='themes/blue/icons/48x48/calculator.png'><br>{calculator}</a></td>
     <td align=center valign=bottom><a href='index.php?scr_name=SV.SCR.applySurveyStepA'><img alt='' src='themes/blue/icons/48x48/survey_apply.png'><br>{applySurvey}</a></td>
     <td align=center valign=bottom><a href='index.php?scr_name=RP.SCR.menu'><img alt='' src='themes/blue/icons/48x48/reports.png'><br>{reports}</a></td>
     <td align=center valign=bottom><a href='index.php?scr_name=RP.SCR.performance'><img alt='' src='themes/blue/icons/48x48/factsheet.png'><br>{factsheet}</a></td>
@@ -26,7 +26,7 @@
   </tr>
   <!--
   <tr>
-    <td align=center valign=bottom><br><br><br><br><a href='index.popup.php?scr_name=MG.SCR.pickAdvisor' target=_new>Interfaz de migración</a></td>
+    <td align=center valign=bottom><br><br><br><br><a href='index.popup.php?scr_name=MG.SCR.pickAdvisor' target=_new>Interfaz de migraciï¿½n</a></td>
   </tr>
   -->
 </table>

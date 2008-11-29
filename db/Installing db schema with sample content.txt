@@ -1,0 +1,25 @@
+1. Database schema with a large sample data set is included here in the repository 
+at /svn/trunk/db/schema/emms.db.sample.gz
+
+2. Be carefull not to checkout the db schema unless you really need it, it is a 
+40MB download as of Nov.30,08.
+
+3. The sample database is taken from a working installation that may not have
+installed the more recent updates in the repository. Find database revision with
+this query: SELECT eng FROM tblConfiguration WHERE var = 'update';
+
+4. Let's say database revision is r4 but the repository latest revision is r9, to update
+your database run all patches from r5.sql to r9.sql available at /svn/trunk/db/patches/
+
+5. The sample db is refreshed every 24 hours.
+
+6. A working installation of EMMS runs a batch process every 24 hours to consolidate
+operations (/app/index.cron.php), if this process is not propperly completed, the
+users access is void. In such a case, you should refresh your database with current
+sample database dump in the repository. Alternatively, you can run yourself 
+the /app/index.cron.php script from your internet browser, or if you do not care some
+missing or corrupted content in the db, just run this query:
+INSERT INTO tblDataLog VALUES (NULL,DATE_SUB(NOW(), INTERVAL 0 DAY),'01:01:01','normal','install','',0);
+
+7. In order to login EMMS you need username/password. Run query below then you can use: admin/123456
+Query: UPDATE tblUsers SET password = 'e1y.tuEXKZRRE' WHERE username = 'admin';

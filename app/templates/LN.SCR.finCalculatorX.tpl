@@ -26,7 +26,7 @@
 </table>
 </td>
 <td valign="top">
-  <iframe name="finCalculatorXPlan" id="finCalculatorXPlan" src="" frameborder="0" marginwidth="0" marginheight="0" width="600" height="2600"></iframe>
+  <iframe name="finCalculatorXPlan" id="finCalculatorXPlan" src="" frameborder="0" marginwidth="0" marginheight="0" width="750" height="2600"></iframe>
 </td>
 </tr>
 </table>

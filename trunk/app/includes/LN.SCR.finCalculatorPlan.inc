@@ -1,13 +1,4 @@
 <?php
-/*
-Que hace este script?
-Muestra el historial de pagos reales de un prestamo y la proyecccion de los pagos
-a partir del final del ultimo pago real.
-Si al prestamo no se le ha abonado ningun pago real, entonces muestra
-solamente la proyecccion de los pagos.
-Si el prestamo aun no ha sido entregado, entonces muestra la proyecccion
-de los pagos a partir de la fecha en curso. 
-*/
 require_once './includes/LN.LIB.functions.inc';
 require_once 'class/roles.php';
 require_once 'class/persons.php';

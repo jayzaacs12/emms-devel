@@ -140,28 +140,30 @@ $tpl->parseCurrentBlock("chart") ;
 
 //print_r($loan); exit;
 
-//minimum delivered date
+//minimum delivered date: $mdate
 $mdate = new Date();
 $mdate->subtractSeconds(24*60*60);
 
+//definitive delivered date: $def_delivered_date
 $ddate = new Date();
-
-// PATCH: 2008.08.12
 if (($master->data['xp_delivered_date'] <= $ddate->format('%Y-%m-%d')) && ($master->data['xp_delivered_date'] >= $mdate->format('%Y-%m-%d'))) {
 	$def_delivered_date = $master->data['xp_delivered_date'];
     } else {
 	$def_delivered_date = $ddate->format('%Y-%m-%d');
     }
 
-// PATCH: 2008.08.12
+//max. 1st paymente date: $max_1st_pmt_date
+$max_1st_pmt_date = new Date($loan->next_payment_date($def_delivered_date));
+
+//definitive 1st payment date: $fdate
 if ($_CONF['flex_1st_pmt_date'] == '1') {
-  $fdate = ($master->data['xp_first_payment_date'] > $def_delivered_date ) ? new Date($master->data['xp_first_payment_date']) : new Date($loan->next_payment_date($def_delivered_date));
+  $fdate = ($master->data['xp_first_payment_date'] > $def_delivered_date ) ? new Date($master->data['xp_first_payment_date']) : $max_1st_pmt_date;
   } else {
-  $fdate = (($master->data['xp_first_payment_date'] <= $loan->next_payment_date($def_delivered_date))&&($master->data['xp_first_payment_date'] > $def_delivered_date)) ? new Date($master->data['xp_first_payment_date']) : new Date($loan->next_payment_date($def_delivered_date));
+  $fdate = (($master->data['xp_first_payment_date'] <= $loan->next_payment_date($def_delivered_date))&&($master->data['xp_first_payment_date'] > $def_delivered_date)) ? new Date($master->data['xp_first_payment_date']) : $max_1st_pmt_date;
   }
 
 //print the form
-$form->setDefaults(array('max_first_payment_date'=>$fdate->format('%Y-%m-%d'),'min_delivered_date'=>$mdate->format('%Y-%m-%d'),'delivered_date'=>$def_delivered_date,'first_payment'=>$fdate->format('%Y-%m-%d')));
+$form->setDefaults(array('max_first_payment_date'=>$max_1st_pmt_date->format('%Y-%m-%d'),'min_delivered_date'=>$mdate->format('%Y-%m-%d'),'delivered_date'=>$def_delivered_date,'first_payment'=>$fdate->format('%Y-%m-%d')));
 $renderer = new HTML_QuickForm_Renderer_ITStatic($tpl);
 $renderer->setRequiredTemplate(WEBPAGE::_REQUIRED_FIELD);
 $renderer->setErrorTemplate(WEBPAGE::_FIELD_ERROR);

@@ -66,5 +66,14 @@ class PROGRAM extends WEBPAGE
   return (SQL::getAssoc_leftjoin($tables, $fields, $left, $on, $param));
   }
 
+  function getAll($status = '')
+  {
+  $status_operator = '=';
+  if (!($status)) {$status_operator = 'like'; $status = '%%';}
+  $fields = 'id, program';
+  $table = 'tblPrograms';
+  $param = sprintf("status %s '%s'",$status_operator,$status);
+  return SQL::getAssoc($table,$fields,$param);
+  }
 }
 ?>

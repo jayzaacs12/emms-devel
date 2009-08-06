@@ -115,9 +115,15 @@ class USER extends WEBPAGE implements PERSONS, ROLES
   return SQL::getAssoc('tblUsers','id,username',sprintf("( access_code & %s ) != 0", self::SUPER));
   }
 
-  function advisors() //implements interface PERSONS
+  function advisors($opt='') //implements interface PERSONS
   {
-  return SQL::getAssoc('tblUsers','id,username',sprintf("( access_code & %s ) != 0", self::ADVISOR));
+  //return SQL::getAssoc('tblUsers','id,username',sprintf("( access_code & %s ) != 0", self::ADVISOR));
+    if ($opt == '') {
+    return SQL::getAssoc('tblUsers','id,username',sprintf("( access_code & %s ) != 0", self::ADVISOR));
+    } else {
+    return WEBPAGE::$dbh->getAssoc(sprintf("select max(u.id) id, concat(u.last,', ',u.first,' - ',u.username) username from tblUsers u, tblLoans l, view_loan_status vls where u.id = l.advisor_id and l.id = vls.loan_id and vls.status = '%s' group by u.username order by u.last",$opt));
+    }
+
   }
 
   function getMyAdvisors($id = '') 

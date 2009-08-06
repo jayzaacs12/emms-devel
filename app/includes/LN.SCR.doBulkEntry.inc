@@ -1,7 +1,9 @@
 <?php
 require_once 'HTML/QuickForm.php';
 require_once 'HTML/QuickForm/Renderer/ITStatic.php';
+require_once 'class/persons.php';
 require_once 'class/roles.php';
+require_once 'class/user.php';
 require_once 'class/society.php';
 require_once 'class/loan_type.php';
 
@@ -27,7 +29,7 @@ $form->addElement('text',		'name',			$_LABELS['tblSocieties.name'],		    'class=
 
 //$form->addElement('select',		'status',		$_LABELS['delay'],						(array('-1'=>'') + $dly), 																'class=large');
 $form->addElement('select',		'zone_id',		$_LABELS['tblSocieties.zone_id'],		($zones = (array(''=>'') + $society->zones())), 		'class=large');
-$form->addElement('select',		'advisor_id',	$_LABELS['tblSocieties.advisor_id'],	($advisors = (array(''=>'') + $society->advisors())),	'class=large');
+$form->addElement('select',		'advisor_id',	$_LABELS['tblSocieties.advisor_id'],	($advisors = (array(''=>'') + USER::advisors('G'))),	'class=large');
 
 $form->addRule('zone_id',		$_LABELS['selectOption'],'required');
 $form->addRule('zone_id',		$_LABELS['selectOption'],'numeric');

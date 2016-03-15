@@ -1,0 +1,1 @@
+EMMS is a web based microcredit management information system based on PHP5/PEAR and MySQL5. It provides the key functionality required by MFIs, including client and loan portfolio management,loan repayment tracking, reporting and tools for social impact.
